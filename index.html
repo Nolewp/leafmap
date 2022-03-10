@@ -7,6 +7,8 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <title>Home Maps</title>
@@ -22,8 +24,17 @@
 
         </header>
         <main>
-            <h1>hello</h1>
+            <div class="text-center">
+            <h3> A OSS web-viewer map can solve real problems</h3>
+            </div>
+            <p class="text-center">This is a leaflet web map that helps
+                represent a few locations on the fly through a 
+                light weight web-viewer with buttons that change the 
+                desired location, plugins for scale, and gecoding to find 
+                other locations as needed.
+            </p>
 
+        </div>
             <div id="map"></div>
             <div id="buttons">
                 <button type="button" class="btn btn-light" id="flstate" >Florida State</button>
@@ -32,24 +43,23 @@
             </div>
         </main>
 
-    </div>
-
- 
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 </body>
 </html>
 
 
 <script>
-    var map = L.map('map').setView([28.06842871415242, -82.30105234509858], 6);
+    var map = L.map('map', {
+        zoomControl: false
+    }).setView([28.06842871415242, -82.30105234509858], 6);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    L.control.scale().addTo(map)
+    L.control.scale().addTo(map);
 
     $('#hollywoodzoom').click(function() {
         map.setView([26.011546392726334, -80.14323931292438], 13)
@@ -61,6 +71,10 @@
         map.setView([27.947743040214263, -82.45], 13)
     })
 
+    L.Control.geocoder().addTo(map);
+    L.control.zoom({
+        position: 'topright'
+    }).addTo(map);
 
 
 </script>
