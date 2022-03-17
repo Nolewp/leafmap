@@ -9,3 +9,6 @@
 h3 {
     padding: 1vh;
 }
+.leaflet-control-layers leaflet-control {
+    background-size: 20px;
+}
