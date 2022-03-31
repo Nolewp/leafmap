@@ -19,14 +19,15 @@ var OpenTopo = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
 
 L.control.scale().addTo(map);
 
-$('#hollywoodzoom').click(function() {
-    map.setView([26.011546392726334, -80.14323931292438], 13)
+document.querySelector('#hollywoodzoom').addEventListener("click", function(e) {
+    map.setView([26.011546392726334, -80.14323931292438], 14)
 })
-$('#flstate').click(function() {
-    map.setView([30.441916706649845, -84.29852799899774], 13)
+
+document.querySelector('#flstate').addEventListener("click", function(e) {
+    map.setView([30.441916706649845, -84.29852799899774], 14)
 })
-$('#tampazoom').click(function() {
-    map.setView([27.947743040214263, -82.45], 13)
+document.querySelector('#tampazoom').addEventListener("click", function(e) {
+    map.setView([27.947743040214263, -82.45], 14)
 })
 
 var baseMaps = {
